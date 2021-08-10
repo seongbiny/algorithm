@@ -1,34 +1,22 @@
 import sys
 sys.stdin = open("input_flatten.txt","r")
 
+def bubble(lst):
+    for i in range(len(lst)-1, 0, -1):
+        for j in range(i):
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+
 for tc in range(1,11):
     dump = int(input())
     box = list(map(int,input().split()))
 
-    maxV = 0
-    minV = 100
-    for i in box:
-        if maxV < i:
-            maxV = i
-        if minV > i:
-            minV = i
-    max_idx = box.index(maxV)
-    min_idx = box.index(minV)
-    box[max_idx] -= 1
-    box[min_idx] += 1
-    dump -= 1
-    print(f'#{tc} {maxV - minV}')
-    '''
-        while dump:
-            max_box = max(box)
-            min_box = min(box)
-            max_idx = box.index(max(box))
-            min_idx = box.index(min(box))
+    for z in range(dump):
+        bubble(box)
+        box[0] += 1
+        box[-1] -= 1
+    bubble(box)
 
-            box[max_idx] -= 1
-            box[min_idx] += 1
+    print(f'#{tc} {box[-1]-box[0]}')
 
-            dump -= 1
 
-        print(f'#{tc} {max(box)-min(box)}')
-    '''
