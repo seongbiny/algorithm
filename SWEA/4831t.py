@@ -5,28 +5,21 @@ TC = int(input())
 for tc in range(1, TC+1):
     K, N, M = map(int, input().split())
     charge = list(map(int, input().split()))
-
     curp = 0
     cnt = 0
-
     while curp < N:
         nextp = curp + K
         if nextp >= N:
             break
-        if nextp in charge: # 충전기가 있나? 갈수 있나?
-            cnt += 1
-            curp = nextp
-        else: # 충전기가 없으면
-            #nextp 의 값을 하나씩 빼면서(앞으로 가면서) 충전기가 있는지 확인
-            #nextp 에서 curp 전까지 충전기가 있는지 확인 한다.
+        if nextp not in charge: # 충전기가 있나? 갈수 있나?
             while curp < nextp and nextp not in charge:
                 nextp -= 1
             if curp == nextp: #충전기가 없다는 뜻
                 cnt = 0
                 break
-            else: #nextp in charge: #충전기가 하나 있다
-                cnt += 1
-                curp = nextp
+
+        cnt += 1
+        curp = nextp
 
     print(f'#{tc} {cnt}')
 

@@ -15,6 +15,7 @@ for i in range(1, T+1):
 
     curs = 0
     cnt = 0
+    nexts = 0
     while curs < N:
         nexts = curs + K
         if nexts >= N:
@@ -33,6 +34,8 @@ for i in range(1, T+1):
                     break
                 else:
                     continue
+
+
 
 # 왜 틀린건지 모르겠다 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
