@@ -17,7 +17,7 @@ for tc in range(1, T+1):
     #for z in bubble(num):
     #    a = str(z)
     #result = ' '.join(a)
-    result = ' '.join(map(str, lowbubble(num)))
+    result = ' '.join(map(str, bubble(num)))
 
     #print(*bubble(num))
     print(f'#{tc} {result}')

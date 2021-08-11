@@ -1,6 +1,6 @@
 import sys
 sys.stdin = open("input.txt","r")
-
+#델타정렬로 풀어보기
 def getMax(a, b, c, d):
     maxV = a
     if maxV < b:

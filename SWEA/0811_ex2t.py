@@ -16,7 +16,7 @@ lst = [-7, -5, -2, 5 , 8]
 #i & 0b00010 => 00000/00010
 
 N = len(lst)
-for i in range(1<<N):  #0b11111 + 1 = 0b100000 = 1<<5
+for i in range(1<<N):  #0b11111 + 1 = 0b100000 = 1<<5 = 2^5
     sumV = 0
     for j in range(N): # bit 수 만큼 돌려
         r = i & (1<<j)
