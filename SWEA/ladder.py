@@ -15,7 +15,7 @@ for tc in range(1, 11):
 
     while row != 0:
         row -= 1
-        if col == 0:
+
 
 
 
