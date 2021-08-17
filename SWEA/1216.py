@@ -1,47 +1,40 @@
 import sys
-sys.stdin = open("input_회문2.txt","r")
+sys.stdin = open('input_회문2.txt')
+
+def check(lst): # 리스트에서 회문 길이 최댓값 뽑는 함수
+    cnt = 0
+    maxV = 0
+    for i in range(50):
+        for j in range(50):
+            if lst[i:99-j] == lst[i:99-j][::-1]:
+                cnt = 99-j-i
+                if maxV < cnt:
+                    maxV = cnt
+    return maxV
 
 T = 10
-for tc in range(1, T+1):
-    n = int(input())
-    arr = [input() for _ in range(100)]
-    result = 0
-    newnewarr=[]
-    cnt_row = [0] * 100
-    # 가로축
-    for i in range(100):
-        for j in range(100):
-            for k in range(1,99-j):
-                if arr[i][j] == arr[i][j+k]:
-                    if arr[i][j:j+k] == arr[i][j:j+k][::-1]:
-                        cnt_row.append(k+1)
-                        maxV = 0
-                        if maxV < cnt_row[j]:
-                            maxV = cnt_row[j]
+for tc in range(1, 11):
 
-    # 세로축
-    cnt_col = [0] * 100
+    num = input()
+    arr = [input() for _ in range(100)]
+
+    result_arr = []
+
+    for j in range(100):
+        result1 = check(arr[j])
+
     for i in range(100):
         newarr = []
         for j in range(100):
             newarr += arr[j][i]
-        newnewarr.append(''.join(newarr))
-    #print(newnewarr)
+        result_arr.append(''.join(newarr))
+    #print(result_arr)
 
     for i in range(100):
-        for j in range(100):
-            for k in range(1, 99-j):
-                if newnewarr[i][j] == newnewarr[i][j+k]:
-                    if newnewarr[i][j:j+k] == newnewarr[i][j:j+k][::-1]:
-                        cnt_col.append(k+1)
-                        max = 0
-                        if max < cnt_col[j]:
-                            max = cnt_col[j]
-    if max <= maxV:
-        result += maxV
+        result2 = check(result_arr[i])
+
+    if result1 > result2:
+        print(f'#{tc} {result1}')
     else:
-        result += max
-
-    print(f'#{tc} {result}')
-
+        print(f'#{tc} {result2}')
 
