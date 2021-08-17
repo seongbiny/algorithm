@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("input_3143.txt","r")
+
 T = int(input())
 for tc in range(1, T+1):
     str1, str2 = input().split()
@@ -16,5 +19,6 @@ for tc in range(1, T+1):
             idxT += idxP # m 도 가능
         else: #패턴 못찾았을때
             idxT += 1
+    cnt = cnt + n - (cnt*m)
 
     print(f'#{tc} {cnt}')
