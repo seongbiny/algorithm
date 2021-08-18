@@ -7,7 +7,8 @@ def getMaxPos(): # 카드 장수가 같을 때는 적힌 숫자가 큰 쪽을 �
         if maxV < COUNTS[j]:
             maxV = COUNTS[j]
             maxP = j
-
+    if maxV == 1:
+        maxP = max(CARDS)
     return maxP
 
 TC = int(input())
@@ -32,4 +33,4 @@ for tc in range(1, TC+1):
 
     ### 런타임에러 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 왜
 
-    # 숫자카드 장수가 같을 때는 적힌 숫자가 큰 쪽을 출력하는 부분 처리할것
+    # 테스트케이스 10개 중 5개 맞춤
