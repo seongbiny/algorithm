@@ -1,43 +1,43 @@
-import sys
-sys.stdin = open("input_1979.txt","r")
+# 01110
+# 11100
+# 00111
+# 11101
+# 10111
 
 T = int(input())
 for tc in range(1, T+1):
+    n, k = map(int, input().split())
+    arr = [list(map(int, input().split())) for _ in range(n)]
 
-    N, K = map(int, input().split()) #N*N 크기 단어길이 : K
-    #for z in range(N):
-    arr = [list(map(int, input().split())) for _ in range(N)]
-    sum = 0
-        # 행우선탐색
-    for i in range(N): # 0 1 2 3 4
-        cnt = 0
-        for j in range(N): # 0 1 2 3 4
-            if arr[i][j] == 0:  # 행이 바뀌기 전에 1이 k일때 있다면 체크
-                if cnt == K:
-                    sum += 1
-                    cnt = 0
-            else: # 흰칸일때 체크
-                cnt += 1
-        if cnt > K:
-            cnt = 0
-        if cnt == K:
-            sum += 1
+    # 1 = 흰색, 0 = 검정
+    # 흰색에 넣어야함
+    # 1*k 의 양 옆에 0 이거나 벽이면 됨
+    cnt = 0
+    for i in range(n): # 0 1 2 3 4
+        check = 0
+        for j in range(n): # 0 1 2 3 4
+            if arr[i][j] == 1:
+                check += 1
+            if arr[i][j] == 0 or j == n-1:
+                # 벽을 만났을때 그동안 쌓아온 check 값이 k 이면 체크
+                if check == k:
+                    cnt += 1
+                check = 0
 
-    sum = 0
-        # 열우선탐색
-    for i in range(N):
-        cnt = 0
-        for j in range(N):
-            if arr[j][i] == 0:
-                if cnt == K:
-                    sum += 1
-                    cnt = 0
-            else:
-                cnt += 1
-        if cnt > K:
-            cnt = 0
-        if cnt == K:
-            sum += 1
+        for j in range(n): # 0 1 2 3 4
+            if arr[j][i] == 1:
+                check += 1
+            if arr[j][i] == 0 or j == n-1:
+                if check == k:
+                    cnt += 1
+                check = 0
 
-    print(f'#{tc} {sum}')
+    print(f'#{tc} {cnt}')
+
+
+
+
+
+
+
 
