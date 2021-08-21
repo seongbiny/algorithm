@@ -11,11 +11,13 @@ for tc in range(1, T+1):
     for i in range(len(arr)):
         if arr[i] == '(':
             cnt += 1
-            if arr[i+1] == ')':
+        elif arr[i] == ')':
+            if arr[i-1] == '(':
+                cnt -= 1
                 sum += cnt
-                cnt = 0
-        else:
-            cnt -= 1
-            sum += 1
+                continue
+            if arr[i-1] == ')':
+                cnt -= 1
+                sum += 1
 
-    print(sum)
+    print(f'#{tc} {sum}')

@@ -25,6 +25,8 @@ for _ in range(10):
         s, e = arr[2*i], arr[2*i+1] # s 시작점, e 마지막점
         adj[s][e] = 1
 
+    #for i in range(0, len(arr), 2):
+
     # for i in range(V+1):
     #     print(f'{i} {adj[i]})
 

@@ -20,3 +20,6 @@ for tc in range(1, T+1):
     #result = ''.join(result)
     result = result.replace(" ", "")
     print(f'#{tc} {result}')
+
+
+    #try except 로 풀어보기
