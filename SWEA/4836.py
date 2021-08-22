@@ -23,7 +23,6 @@ for tc in range(1, T+1):
     print(f'#{tc} {cnt}')
 
 
-# 10 개 중 6개 정답 왜 ??
 
 
 
