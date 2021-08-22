@@ -6,6 +6,7 @@ for i in range(1,T+1):
 
     maxV = 0 # 최대값 초기값
     minV = 10000000 # 최소값 초기값
+
     for z in nums:
         if maxV < z:
             maxV = z # 최대값을 내장함수 없이 구하는 과정
@@ -13,5 +14,7 @@ for i in range(1,T+1):
         if minV > j:
             minV = j # 최소값을 내장함수 없이 구하는 과정
     print(f'#{i} {maxV - minV}') # 최대값 - 최소값
+
+
 
 
