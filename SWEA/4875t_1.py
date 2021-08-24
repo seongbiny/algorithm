@@ -45,15 +45,15 @@ def dfs(curx, cury):
 T = int(input())
 for tc in range(1, T+1):
     n = int(input())
-    #arr = [list(map(int, input())) for _ in range(n)]
-    arr = [list(int(input())) for _ in range(n)]
+    arr = [list(map(int, input())) for _ in range(n)]
+    #arr = [list(int(input())) for _ in range(n)]
     #arr = [list(input()) for _ in range(n)]
 
     for i in range(n):
         for j in range(n):
             if arr[i][j] == 2:
-                curx = j
-                cury = i
+                curx = i
+                cury = j
                 break
 
     result = dfs(curx, cury)
