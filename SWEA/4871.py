@@ -30,8 +30,8 @@ for tc in range(1, T+1):
         a, b = map(int, input().split())
         lst.append(a)
         lst.append(b)
-    s, g = map(int, input().aplit())
+    s, g = map(int, input().split())
 # lst = [1, 4, 1, 3, 2, 3, 2, 5, 4, 6]
 
-
+    print(f'#{tc} {dfs(s)}')
 

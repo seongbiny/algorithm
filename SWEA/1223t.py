@@ -1,5 +1,5 @@
-def step1(s):
-    isp = {'*': 2, '+': 1}
+def step1(s):  # 중위표기법을 후위표기법으로 바꾸는 작업
+    isp = {'*': 2, '+': 1} #'(' ')'
     t = []
     st = []
     for c in s:
@@ -15,7 +15,7 @@ def step1(s):
         t.append(st.pop(-1))
     return t
 
-def step2(t):
+def step2(t): # 숫자면 스택에 넣고 연산자면 st에서 숫자를 pop해서 연산 후 결과를 st에 넣는다.
     st = []
     for c in t:
         if c.isdecimal():
@@ -23,6 +23,8 @@ def step2(t):
         else:
             n1 = st.pop()
             n2 = st.pop()
+            n1 = int(n1)
+            n2 = int(n2)
             if c == '+':
                 st.append(n1+n2)
             if c == '*':
