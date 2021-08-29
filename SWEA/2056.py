@@ -1,45 +1,26 @@
 T = int(input())
 for tc in range(1, T+1):
-    date = list(map(int, input()))
-    print(date)
+    date = input()
 
-    # print(f'#{tc}', end=' ')
-    # if date[0] != 0:
-    #     print(f'{date[0]}{date[1]}{date[2]}{date[3]}',end="/")
-    #     if date[4] < 2:
-    #         if 0 < date[5] < 10:
-    #             print(f'{date[4]}{date[5]}', end="/")
-    #             if date[6] < 4:
-    #                 if date[7] < 10:
-    #                     print(f'{date[6]}{date[7]}')
-    #                 else: print(-1)
-    #             else: print(-1)
-    #         else: print(-1)
-    #     else: print(-1)
-    # else: print(-1)
+    year = date[:4]
+    mon = date[4:6]
+    day = date[6:8]
+    day_dict = {1: 31, 2: 28, 3: 31, 4: 40, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
 
-    for y in range(0,4):
-        if date[0] != 0:
-            print(f'{date[y]}', end='')
+    if (int(mon) >= 13) or (int(mon) <= 0):
+        print(f'#{tc} -1')
+        continue
+    else:
+        if day_dict[int(mon)] < int(day) or int(day) <= 0:
+            print(f'#{tc} -1')
+            continue
         else:
-            print(-1)
-            pass
-    for m in range(4,6):
-        if date[4] < 3:
-            if date[5] < 10:
-                print(f'{date[m]}', end='')
-        else:
-            print(-1)
-            pass
-
-    for d in range(6,8):
-        if date[6] < 4:
-            if date[7] < 10:
-                print(f'{date[d]}', end='')
-        else:
-            print(-1)
-            pass
+            print(f'#{tc} {year}/{mon}/{day}')
 
 
-        # 슬라이싱 !
+
+
+
+
+
 
