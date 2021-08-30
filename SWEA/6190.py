@@ -3,24 +3,24 @@ for tc in range(1, T+1):
     n = int(input())
     lst = list(map(int, input().split()))
 
-    result = -1
-    multiply = []
-
+    maxV = 0
     for i in range(n):
         for j in range(i+1, n):
-            multiply.append(lst[i] * lst[j])
-    multiply2 = list(map(str, multiply)) # ['8', '14', '20', '28', '40', '70']
+            int_target = lst[i] * lst[j]
+            target = str(int_target)
+            if len(target) > 1:
+                for k in range(len(target)-1):
+                    if target[k] > target[k+1]:
+                        break
+                    else:
+                        if int_target > maxV:
+                            maxV = int_target
 
-    for i in multiply2:
-        if len(i) < 2:
-            multiply.remove(int(i))
-        elif len(i) > 1:
-            a = ''.join(sorted(i))
-            if i != a:
-                multiply.remove(int(i))
-        result = max(multiply)
+    if maxV == 0:
+        print(f'#{tc} -1')
+    else:
+        print(f'#{tc} {maxV}')
 
-    print(f'#{tc} {result}')
 
 
 
