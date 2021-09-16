@@ -12,5 +12,5 @@ for tc in range(1, T+1):
     sumV = list(set(sumV))
 
     sumV = sorted(sumV, reverse=True)
-
+    # print(sumV)
     print(f'#{tc} {sumV[4]}')
