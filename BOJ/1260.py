@@ -1,38 +1,28 @@
-from collections import deque
+N, M, V = map(int, input().split())
+matrix = [[0]*(N+1) for _ in range(N+1)]
+for i in range(M):
+    a, b = map(int, input().split())
+    matrix[a][b] = matrix[b][a] = 1
+visited = [0] * (N+1)
 
-n, m, v = map(int, input().split())
-graph = [[0]*(n+1) for _ in range(n+1)]
+def dfs(V):
+    visited[V] = 1 # 방문한 점 1로 체크
+    print(V, end=' ')
+    for i in range(1, N+1):
+        if visited[i] == 0 and matrix[V][i] == 1:
+            dfs(i)
 
-for _ in range(m):
-    m1, m2 = map(int, input().split())
-    graph[m1][m2] = graph[m2][m1] = 1
-
-# 너비 우선 탐색
-def bfs(start_v):
-    visited = [start_v]
-    queue = deque()
-    queue.append(start_v)
-
+def bfs(V):
+    queue = [V] # 들려야 할 정점 저장
+    visited[V] = 0 # 방문한 점 0으로 체크
     while queue:
-        v = queue.popleft()
-        print(v, end=' ')
+        V = queue.pop(0)
+        print(V, end=' ')
+        for i in range(1, N+1):
+            if visited[i] == 1 and matrix[V][i] == 1:
+                queue.append(i)
+                visited[i] = 0
 
-        for w in range(len(graph[start_v])):
-            if graph[v][w] == 1 and (w not in visited):
-                visited.append(w)
-                queue.append(w)
-
-# 깊이 우선 탐색
-def dfs(start_v, visited=[]):
-    visited.append(start_v)
-    print(start_v, end=' ')
-
-    for w in range(len(graph[start_v])):
-        if graph[start_v][w] == 1 and (w not in visited):
-            dfs(w, visited)
-
-dfs(v)
+dfs(V)
 print()
-bfs(v)
-
-
+bfs(V)
