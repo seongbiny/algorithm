@@ -32,7 +32,6 @@ def solve(x,y,sub_sum):
         if 0 <= nx < N and 0 <= ny < N:
             solve(nx,ny,sub_sum+arr[nx][ny])
 
-
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())

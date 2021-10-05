@@ -14,7 +14,6 @@ def solve(x,y,sub_sum):
     if y+1 < N:
         solve(x,y+1,sub_sum+e[y+1][x])
 
-
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
