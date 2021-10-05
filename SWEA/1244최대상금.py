@@ -4,25 +4,34 @@ for tc in range(1, T+1):
     cnt = int(cnt)
     nums = []
     for i in range(len(num)):
-        nums.append(num[i])
-    new_nums = sorted(nums)
-
+        nums.append(int(num[i]))
+    min_nums = nums[:]
+    max_nums = nums[:]
+    minmin = nums[:]
+    maxmax = nums[:]
     min_index = []
     max_index = []
+    min_nums.sort()
+    max_nums.sort(reverse=True)
+
+    for i in min_nums:
+        min_index.append(minmin.index(i))
+        minmin[minmin.index(i)] = 0
+
+    for i in max_nums: # 7 7 3 2
+        for j in range(len(maxmax)-1, -1, -1): # 3 2 1 0
+            if maxmax[j] == i:
+                max_index.append(j)
+                maxmax[j] = 0
+
+    while cnt > 0:
+
+
+        cnt -= 1
+
     for i in range(len(nums)):
-        a = nums.index(new_nums[i])
-        min_index.append(a)
-        nums[a] = 99999
-    for i in range(len(nums)):
-        pass
-
-    print(min_index, max_index)
-
-    # for i in range(cnt):
-    #     if len(nums) == 2:
-    #         nums[0], nums[1] = nums[1], nums[0]
-    #     else: #최소값과 인덱스가 큰 최대값 자리를 바꾼다.
-    #         nums[min_index[i]], nums[max_index[i]] = nums[max_index[i]], nums[min_index[i]]
-
+        nums[i] = str(nums[i])
+    result = ''.join(nums)
+    print(f'#{tc} {result}')
 
 
