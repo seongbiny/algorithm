@@ -1,5 +1,5 @@
 idx = list(input())
-
+# int(ord(idx[0])) - int(ord('a') + 1
 col = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7}
 y = col.get(idx[0])
 x = int(idx[1])-1
