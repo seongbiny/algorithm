@@ -1,26 +1,42 @@
-def dfs(cur, sub_sum):
-    global total
-    if sub_sum < total:
-        if 0 not in visited[1:]:
-            total = min(total, sub_sum + e[cur][0])
+def dfs(x):
+    global start_point, total, N
+    if len(visited) == N:
+        start_point += e[x][0]
+        if total < start_point:
+            start_point -= e[x][0]
             return
-        for j in range(1, N):
-            if e[cur][j] != 0 and visited[j] == 0:
-                visited[j] = 1
-                dfs(j, sub_sum+e[cur][j])
-                visited[j] = 0
+
+    if total < start_point:
+        return
+    elif len(visited) == N:
+        total = start_point
+        start_point -= e[x][0]
+        return
+
+    for i in range(1, N):
+        if i not in visited:
+            visited.append(i)
+            start_point += e[x][i]
+            dfs(i)
+            visited.remove(i)
+            start_point -= e[x][i]
 
 T = int(input())
-for tc in range(1,T+1):
+for tc in range(1, T+1):
     N = int(input())
-    e = [list(map(int,input().split())) for _ in range(N)]
+    e = [list(map(int, input().split())) for _ in range(N)]
 
-    total = 99999
+    visited = [0]
 
-    for i in range(1, N): # 1 2
-        visited = [0] * N # [0, 0, 0]
-        visited[i] = 1
-        dfs(i, e[0][i])
+    start_point = 0
+    total = 9999999
+
+    for i in range(1, N):
+        start_point += e[0][i]
+        visited.append(i)
+        dfs(i)
+        visited.remove(i)
+        start_point -= e[0][i]
+
     print(f'#{tc} {total}')
-
 
