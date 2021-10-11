@@ -1,28 +1,24 @@
+# 10진수 -> 2진수
+def binary(num):
+    binary = ''
+    for i in range(3, -1, -1):
+        binary += str(num // (2**i))
+        num %= (2**i)
+    return binary
+
+# 16진수 -> 10진수
+def decimal(str):
+    if ord('0') <= ord(str) <= ord('9'):
+        return ord(str) - ord('0')
+    return ord(str) - ord('A') + 10
+
 T = int(input())
 for tc in range(1, T+1):
-    n, jinsu = input().split()
+    n, hexadecimal = input().split()
 
-    dict = {
-        'A': 10,
-        'B': 11,
-        'C': 12,
-        'D': 13,
-        'E': 14,
-        'F': 15,
-    }
     result = ''
-    for i in range(len(jinsu)):
-        if jinsu[i] not in dict:
-            a = int(jinsu[i])
-        else:
-            a = dict[jinsu[i]]
 
-        num = 8
-        for j in range(4):
-            if a & num:
-                result += '1'
-            else:
-                result += '0'
-            num = num >> 1
+    for i in hexadecimal:
+        result += binary(decimal(i))
 
     print(f'#{tc} {result}')
