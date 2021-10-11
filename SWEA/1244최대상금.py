@@ -1,24 +1,19 @@
-def swap(a):
-    global cnt
-    cur_nums = int("".join(nums))
-    if a == change:
-        cnt = max(cnt, cur_nums)
-        return
-
-    for i in range(len(nums)-1):
-        for j in range(i+1, len(nums)):
-            nums[i], nums[j] = nums[j], nums[i]
-            swap(a+1)
-            nums[i], nums[j] = nums[j], nums[i]
-
-
 T = int(input())
 for tc in range(1, T+1):
-    nums, change = input().split()
-    nums = list(nums)
+    nums, cnt = input().split()
+    cnt = int(cnt)
+    N = len(nums)
+    cur_nums = set([nums])
+    next_nums = set()
+    for _ in range(cnt):
+        while cur_nums:
+            s = cur_nums.pop()
+            s = list(s)
+            for i in range(N):
+                for j in range(i+1, N):
+                    s[i],s[j] = s[j],s[i]
+                    next_nums.add(''.join(s))
+                    s[i],s[j] = s[j], s[i]
+        cur_nums, next_nums = next_nums, cur_nums
 
-    change = int(change)
-    cnt = 0
-
-    swap(0)
-    print(f'#{tc} {cnt}')
+    print(f'#{tc} {max(map(int,cur_nums))}')
