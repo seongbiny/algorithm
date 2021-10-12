@@ -2,7 +2,7 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     room = [list(map(int, input().split())) for _ in range(N)]
-
+    # 우 하 상 좌
     dx = [1, 0, 0, -1]
     dy = [0, 1, -1, 0]
     check = N*N*[0]+[0]
@@ -16,8 +16,8 @@ for tc in range(1, T+1):
                 if 0 <= nx < N and 0 <= ny < N:
                     if room[nx][ny] == start + 1:
                         check[start] += 1
-    #print(check)
-    i = N
+    print(check)
+    i = len(check)-1
     cnt = 1
     max_min = 0
     idx = 0
