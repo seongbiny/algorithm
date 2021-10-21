@@ -11,17 +11,17 @@ for tc in range(1, T+1):
     for i in range(2, len(b)+2):
         arr[i][0] = b[i-2]
 
-    maxv = 0
+    # maxv = 0
     for i in range(2, len(b)+2):
         for j in range(2, len(a)+2):
             if arr[0][j] == arr[i][0]:
                 arr[i][j] = arr[i-1][j-1] + 1
             else:
                 arr[i][j] = max(arr[i-1][j], arr[i][j-1])
-                if arr[i][j] > maxv:
-                    maxv = arr[i][j]
+                # if arr[i][j] > maxv:
+                #     maxv = arr[i][j]
 
-    print(f'#{tc} {maxv}')
+    print(f'#{tc} {arr[-1][-1]}')
 
     '''
     연속된 값 구하는게 아님 ! 비교하는 과정에서 이전의 최대 공통부분수열은 계속 유지됨됨
