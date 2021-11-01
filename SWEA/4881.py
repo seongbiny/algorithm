@@ -24,7 +24,7 @@ T = int(input())
 for tc in range(1, T+1):
     n = int(input())
     arr = [list(map(int, input().split())) for _ in range(n)]
-    t = [-1] * n
+
     visited = [False] * n
     sumV = 0
     minV = 10 * n
