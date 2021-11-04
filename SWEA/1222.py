@@ -26,3 +26,5 @@ for tc in range(1, 11):
                 st.append(num1 + num2)
 
     print(f'#{tc} {st[0]}')
+
+    # 34+5+6+7+
