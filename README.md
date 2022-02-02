@@ -1,5 +1,7 @@
 # README
 
+⭐매일 한 문제씩 Javascript, Python 으로 풀기⭐
+
 ## 공부해야할 주제
 
 - ⭐⭐⭐ 구현
