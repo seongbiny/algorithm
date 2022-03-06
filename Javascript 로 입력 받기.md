@@ -5,3 +5,4 @@ const fs = require('fs');
 const input = fs.readFildSync('dev/stdin').toString().trim().split(' ');
 ```
 
+​    
