@@ -1,33 +1,41 @@
+'''
+bfs는 queue를 사용한다.
+bfs는 현재 노드에서 가까운 곳부터 찾기 때문에 경로 탐색 시 첫번재로 찾아가는 길이 최단거리이다.
+'''
+
 import sys
 input = sys.stdin.readline
+from collections import deque
 
 n, m = map(int, input().split())
 arr = [list(map(int, ' '.join(input()).split())) for _ in range(n)]
-chk = [[False] * m for _ in range(n)]
-# print(arr)
+
 dy = [1,0,-1,0]
 dx = [0,1,0,-1]
-def bfs(y, x):
-    cnt = 1
-    q = [(y, x)]
+def bfs(y,x):
+    q = deque()
+    q.append((y,x))
     while q:
-        ey, ex = q.pop()
+        cur_y, cur_x = q.popleft()
         for k in range(4):
-            ny = ey + dy[k]
-            nx = ex + dx[k]
-            if 0<=ny<n and 0<=nx<m:
-                if arr[ny][nx] == 1 and chk[ny][nx] == False:
-                    cnt += 1
-                    chk[ny][nx] = True
-                    q.append((ny,nx))
-    return cnt
+            new_y = cur_y + dy[k]
+            new_x = cur_x + dx[k]
+            if 0<= new_y < n and 0<= new_x < m and arr[new_y][new_x] == 1:
+                arr[new_y][new_x] = arr[cur_y][cur_x] + 1
+                q.append((new_y,new_x))
+    return arr[n-1][m-1]
 
-minv = 100000
+print(bfs(0,0))
+# print(arr)
 
-for j in range(n):
-    for i in range(m):
-        if arr[j][i] == 1 and chk[j][i] == False:
-            chk[j][i] = True
-            minv = min(minv, bfs(j,i))
+'''
+[[3, 0, 9, 10, 11, 12], 
+[2, 0, 8, 0, 12, 0], 
+[3, 0, 7, 0, 13, 14], 
+[4, 5, 6, 0, 14, 15]]
 
-print(minv)
+[[3, 2, 0, 8, 9, 0], 
+[2, 3, 0, 7, 8, 0], 
+[3, 4, 5, 6, 7, 8], 
+[4, 5, 6, 7, 0, 9]]
+'''
