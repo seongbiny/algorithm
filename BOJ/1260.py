@@ -4,7 +4,7 @@ for i in range(M):
     a, b = map(int, input().split())
     matrix[a][b] = matrix[b][a] = 1
 visited = [0] * (N+1)
-
+print(matrix)
 def dfs(V):
     visited[V] = 1 # 방문한 점 1로 체크
     print(V, end=' ')
