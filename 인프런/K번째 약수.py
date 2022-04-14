@@ -4,4 +4,7 @@ for i in range(2, n):
     if n%i == 0:
         lst.append(i)
 lst.sort()
-print(lst[k-1])
+if len(lst) >= k-1:
+    print(lst[k-1])
+else:
+    print(-1)
